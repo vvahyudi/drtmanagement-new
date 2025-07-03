@@ -5,6 +5,8 @@ import { Suspense, type ReactNode } from "react"
 import WhatsAppButton from "@/components/whatsapp-button"
 import "@/styles/globals.css"
 import { PageTransition, StairTransition } from "@/components/transitions"
+import Header from "@/components/header"
+import Footer from "@/components/footer"
 
 // Optimized font loading with display swap for better performance
 const dmSans = DM_Sans({
@@ -105,83 +107,30 @@ function WhatsAppFallback() {
 
 export default function RootLayout({ children }: RootLayoutProps) {
 	return (
-		<html lang="en" className={dmSans.variable}>
-			<head>
-				{/* Preconnect to external domains for performance */}
-				<link rel="preconnect" href="https://fonts.googleapis.com" />
-				<link
-					rel="preconnect"
-					href="https://fonts.gstatic.com"
-					crossOrigin="anonymous"
+		<div
+			className="min-h-screen font-sans antialiased bg-gradient-deep-space"
+			suppressHydrationWarning
+		>
+			{/* Main content area */}
+			<PageTransition>
+				<StairTransition />
+				<div>
+					<Header />
+					{children}
+
+					<Footer />
+				</div>
+			</PageTransition>
+
+			{/* WhatsApp component with suspense boundary */}
+			<Suspense fallback={<WhatsAppFallback />}>
+				<WhatsAppButton
+					phoneNumber="6282322503101"
+					message="Hi! I'm interested in DRT Management services. Can you help me get started with livestreaming?"
+					customText="Need Help?"
+					notificationCount={1}
 				/>
-
-				{/* DNS prefetch for potential external resources */}
-				<link rel="dns-prefetch" href="https://api.whatsapp.com" />
-
-				{/* Favicon and app icons */}
-				<link rel="icon" href="/favicon.ico" sizes="32x32" />
-				<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-				<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-				<link rel="manifest" href="/manifest.json" />
-			</head>
-			<body
-				className="min-h-screen bg-background font-sans antialiased"
-				suppressHydrationWarning
-			>
-				{/* Skip to main content for accessibility */}
-				<a
-					href="#main-content"
-					className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 z-50 bg-primary text-primary-foreground px-4 py-2 rounded-md font-medium transition-all duration-200"
-				>
-					Skip to main content
-				</a>
-
-				{/* Main content area */}
-				<PageTransition>
-					<StairTransition />
-					<main id="main-content" className="relative">
-						{children}
-					</main>
-				</PageTransition>
-
-				{/* WhatsApp component with suspense boundary */}
-				<Suspense fallback={<WhatsAppFallback />}>
-					<WhatsAppButton
-						phoneNumber="6282322503101"
-						message="Hi! I'm interested in DRT Management services. Can you help me get started with livestreaming?"
-						customText="Need Help?"
-						notificationCount={1}
-					/>
-				</Suspense>
-
-				{/* Structured data for SEO */}
-				<script
-					type="application/ld+json"
-					dangerouslySetInnerHTML={{
-						__html: JSON.stringify({
-							"@context": "https://schema.org",
-							"@type": "Organization",
-							name: "DRT Management",
-							description:
-								"Premier livestreaming agency providing comprehensive solutions for content creators.",
-							url: "https://drtmanagement.com",
-							logo: "https://drtmanagement.com/images/logo.png",
-							contactPoint: {
-								"@type": "ContactPoint",
-								contactType: "Customer Service",
-								availableLanguage: ["English"],
-							},
-							areaServed: "Worldwide",
-							serviceType: [
-								"Livestreaming Management",
-								"Content Creator Services",
-								"Audience Growth",
-								"Monetization Strategy",
-							],
-						}),
-					}}
-				/>
-			</body>
-		</html>
+			</Suspense>
+		</div>
 	)
 }
