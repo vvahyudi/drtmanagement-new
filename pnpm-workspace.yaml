@@ -1,4 +1,5 @@
 onlyBuiltDependencies:
   - '@tailwindcss/oxide'
   - sharp
+  - tesseract.js
   - unrs-resolver

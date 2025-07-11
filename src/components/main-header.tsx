@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button"
 import MobileNavbar from "@/components/mobile-navbar"
 import { dmSerif } from "@/styles/font"
 import { cn } from "@/lib/utils"
-import { Sparkles, Zap } from "lucide-react"
+import { Sparkles } from "lucide-react"
 
 interface HeaderProps {
 	className?: string
@@ -47,7 +47,7 @@ const Header = memo<HeaderProps>(({ className }) => {
 									"text-xl md:text-3xl font-bold bg-gradient-to-r from-white to-purple-200 bg-clip-text text-transparent",
 								)}
 							>
-								DRT Management
+								DRT Entertainment
 							</h1>
 							<div className="h-px bg-gradient-to-r from-primary via-purple-500 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 mt-1" />
 						</div>

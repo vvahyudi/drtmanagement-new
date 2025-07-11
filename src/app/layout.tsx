@@ -5,6 +5,8 @@ import { Suspense, type ReactNode } from "react"
 import WhatsAppButton from "@/components/whatsapp-button"
 import "@/styles/globals.css"
 import { PageTransition, StairTransition } from "@/components/transitions"
+import Header from "@/components/main-header"
+import Footer from "@/components/footer"
 
 // Optimized font loading with display swap for better performance
 const dmSans = DM_Sans({
@@ -18,31 +20,37 @@ const dmSans = DM_Sans({
 // Enhanced SEO-friendly metadata
 export const metadata: Metadata = {
 	title: {
-		default: "DRT Management - Start Your Livestreaming Journey Today",
-		template: "%s | DRT Management",
+		default:
+			"DRT Entertainment - Start Your Livestreaming & Digital Entertainment Journey Today",
+		template: "%s | DRT Entertainment",
 	},
 	description:
-		"DRT Management is a premier livestreaming agency providing comprehensive solutions for content creators. We nurture gifted talent, help grow audiences, and maximize content monetization through expert guidance and support.",
+		"DRT Entertainment is a leading digital entertainment and livestreaming agency empowering creators, influencers, and brands. We nurture talent, grow audiences, and maximize monetization through expert guidance, innovative strategies, and global reach.",
 	keywords: [
+		"digital entertainment",
 		"livestreaming agency",
 		"content creator management",
-		"livestream monetization",
+		"influencer marketing",
 		"talent management",
 		"streaming services",
 		"audience growth",
 		"content creation",
 		"digital marketing",
-		"influencer management",
+		"brand partnerships",
+		"monetization strategy",
+		"social media growth",
+		"creator economy",
+		"DRT Entertainment",
 	],
-	authors: [{ name: "DRT Management" }],
-	creator: "DRT Management",
-	publisher: "DRT Management",
+	authors: [{ name: "DRT Entertainment" }],
+	creator: "DRT Entertainment",
+	publisher: "DRT Entertainment",
 	formatDetection: {
 		email: false,
 		address: false,
 		telephone: false,
 	},
-	metadataBase: new URL("https://drtmanagement.com"),
+	metadataBase: new URL("https://link.drtentertainment.com"),
 	alternates: {
 		canonical: "/",
 	},
@@ -50,16 +58,17 @@ export const metadata: Metadata = {
 		type: "website",
 		locale: "en_US",
 		url: "/",
-		siteName: "DRT Management",
-		title: "DRT Management - Start Your Livestreaming Journey Today",
+		siteName: "DRT Entertainment",
+		title:
+			"DRT Entertainment - Start Your Livestreaming & Digital Entertainment Journey Today",
 		description:
-			"Premier livestreaming agency providing comprehensive solutions for content creators. We nurture talent, grow audiences, and maximize monetization.",
+			"Leading digital entertainment and livestreaming agency empowering creators, influencers, and brands. Nurture talent, grow audiences, and maximize monetization.",
 		images: [
 			{
 				url: "/images/og-image.jpg",
 				width: 1200,
 				height: 630,
-				alt: "DRT Management - Livestreaming Agency",
+				alt: "DRT Entertainment - Digital Entertainment & Livestreaming Agency",
 				type: "image/jpeg",
 			},
 		],
@@ -125,7 +134,7 @@ export default function RootLayout({ children }: RootLayoutProps) {
 				<link rel="manifest" href="/manifest.json" />
 			</head>
 			<body
-				className="min-h-screen bg-background font-sans antialiased"
+				className="min-h-screen bg-gradient-deep-space-alt font-sans antialiased"
 				suppressHydrationWarning
 			>
 				{/* Skip to main content for accessibility */}
@@ -139,16 +148,19 @@ export default function RootLayout({ children }: RootLayoutProps) {
 				{/* Main content area */}
 				<PageTransition>
 					<StairTransition />
-					<main id="main-content" className="relative">
+					<div>
+						<Header />
 						{children}
-					</main>
+
+						<Footer />
+					</div>
 				</PageTransition>
 
 				{/* WhatsApp component with suspense boundary */}
 				<Suspense fallback={<WhatsAppFallback />}>
 					<WhatsAppButton
 						phoneNumber="6282322503101"
-						message="Hi! I'm interested in DRT Management services. Can you help me get started with livestreaming?"
+						message="Hi! I'm interested in DRT Entertainment services. Can you help me get started with digital entertainment or livestreaming?"
 						customText="Need Help?"
 						notificationCount={1}
 					/>
@@ -161,22 +173,30 @@ export default function RootLayout({ children }: RootLayoutProps) {
 						__html: JSON.stringify({
 							"@context": "https://schema.org",
 							"@type": "Organization",
-							name: "DRT Management",
+							name: "DRT Entertainment",
 							description:
-								"Premier livestreaming agency providing comprehensive solutions for content creators.",
-							url: "https://drtmanagement.com",
-							logo: "https://drtmanagement.com/images/logo.png",
+								"Leading digital entertainment and livestreaming agency empowering creators, influencers, and brands.",
+							url: "https://drtentertainment.com",
+							logo: "https://drtentertainment.com/images/logo.png",
 							contactPoint: {
 								"@type": "ContactPoint",
 								contactType: "Customer Service",
-								availableLanguage: ["English"],
+								availableLanguage: ["English", "Indonesian"],
 							},
 							areaServed: "Worldwide",
 							serviceType: [
+								"Digital Entertainment Management",
 								"Livestreaming Management",
 								"Content Creator Services",
 								"Audience Growth",
 								"Monetization Strategy",
+								"Influencer Marketing",
+								"Brand Partnerships",
+							],
+							sameAs: [
+								"https://instagram.com/drtentertainment",
+								"https://www.tiktok.com/@drtentertainment",
+								"https://www.youtube.com/@drtentertainment",
 							],
 						}),
 					}}

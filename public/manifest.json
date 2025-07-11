@@ -1,0 +1,21 @@
+{
+	"name": "DRT Entertainment",
+	"short_name": "DRT",
+	"description": "Kreativitas Tanpa Batas di Dunia Live Streaming",
+	"start_url": "/",
+	"display": "standalone",
+	"background_color": "#18181b",
+	"theme_color": "#a21caf",
+	"icons": [
+		{
+			"src": "/logo-drt.png",
+			"sizes": "192x192",
+			"type": "image/png"
+		},
+		{
+			"src": "/logo-drt.png",
+			"sizes": "512x512",
+			"type": "image/png"
+		}
+	]
+}

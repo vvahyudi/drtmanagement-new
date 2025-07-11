@@ -106,7 +106,7 @@ const Footer: React.FC = () => {
 
 					{/* Navigation sections */}
 					<div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-						{footerSections.map((section, sectionIndex) => (
+						{footerSections.map((section) => (
 							<nav key={section.title} className="space-y-4">
 								<h3 className="text-lg font-semibold text-white mb-6 relative">
 									{section.title}
@@ -114,7 +114,7 @@ const Footer: React.FC = () => {
 								</h3>
 
 								<ul className="space-y-3">
-									{section.items.map((item, itemIndex) => (
+									{section.items.map((item) => (
 										<li key={item.label}>
 											{item.external ? (
 												<a
