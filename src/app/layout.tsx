@@ -5,7 +5,7 @@ import { Suspense, type ReactNode } from "react"
 import WhatsAppButton from "@/components/whatsapp-button"
 import "@/styles/globals.css"
 import { PageTransition, StairTransition } from "@/components/transitions"
-import Header from "@/components/main-header"
+import Header from "@/components/header/header"
 import Footer from "@/components/footer"
 
 // Optimized font loading with display swap for better performance

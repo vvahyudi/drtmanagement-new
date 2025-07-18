@@ -148,7 +148,7 @@ export default function KalkulatorDukuPage() {
 
 			<section className="space-y-6">
 				<div className="bg-gray-800/50 p-4 rounded-lg border border-white/10">
-					<label className="block text-sm font-medium text-teal-300 mb-2 flex items-center gap-2">
+					<label className="text-sm font-medium text-teal-300 mb-2 flex items-center gap-2">
 						<ImageIcon className="w-4 h-4" /> Upload Screenshot (OCR)
 					</label>
 					<input

@@ -1,9 +1,9 @@
 import React, { memo } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { Navbar } from "./navbar"
+import { Navbar } from "@/components/header/navbar"
 import { Button } from "@/components/ui/button"
-import MobileNavbar from "@/components/mobile-navbar"
+import MobileNavbar from "@/components/header/mobile-navbar"
 import { dmSerif } from "@/styles/font"
 import { cn } from "@/lib/utils"
 import { Sparkles } from "lucide-react"
@@ -16,7 +16,7 @@ const Header = memo<HeaderProps>(({ className }) => {
 	return (
 		<header
 			className={cn(
-				"py-6 xl:py-8 text-white backdrop-blur-xl bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 border-b border-white/10",
+				"fixed top-0 left-0 right-0 z-50 py-4 xl:py-6 text-white backdrop-blur-xl bg-gradient-to-br from-slate-900/95 via-slate-800/95 to-slate-900/95 border-b border-white/10 transition-all duration-300",
 				className,
 			)}
 		>
