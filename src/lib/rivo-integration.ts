@@ -1,4 +1,4 @@
-import CryptoJS from "crypto-js"
+import { MD5 } from "crypto-es/lib/md5"
 
 interface RivoRequestParams {
 	agentId: number
@@ -15,13 +15,13 @@ interface RivoRequestParams {
 }
 
 const BASE_URL = process.env.NEXT_PUBLIC_RIVO_API_URL || ""
-const AGENT_KEY = process.env.RIVO_AGENT_KEY || ""
+const AGENT_KEY = process.env.NEXT_PUBLIC_RIVO_AGENT_KEY || ""
 const AGENT_ID = Number(process.env.NEXT_PUBLIC_RIVO_AGENT_ID) || 0
 
 // Generate signature based on Rivo's algorithm
 const generateSignature = (params: RivoRequestParams): string => {
 	const { signatureNonce, timestamp } = params
-	return CryptoJS.MD5(
+	return MD5(
 		`${AGENT_ID}|${signatureNonce}|${AGENT_KEY}|${timestamp}`,
 	).toString()
 }
