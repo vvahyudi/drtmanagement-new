@@ -1,15 +1,41 @@
-export async function POST(req: Request) {
-	const body = await req.json()
+import { NextRequest } from "next/server"
+import crypto from "crypto"
 
-	const res = await fetch(
+const AGENT_KEY = process.env.RIVO_AGENT_KEY!
+
+export async function POST(req: NextRequest) {
+	const body = await req.json()
+	const { agentId, signatureNonce, timestamp, toUId } = body
+
+	// Generate signature sesuai algoritma
+	const signatureString = `${agentId}|${signatureNonce}|${AGENT_KEY}|${timestamp}`
+	const signature = crypto
+		.createHash("md5")
+		.update(signatureString)
+		.digest("hex")
+
+	// Build payload untuk API Rivo
+	const payload = {
+		agentId,
+		signature,
+		signatureNonce,
+		timestamp,
+		toUId,
+	}
+
+	const response = await fetch(
 		"http://apiserver.rivoworldserver.com/v2/third/agent/query-user-info",
 		{
 			method: "POST",
 			headers: { "Content-Type": "application/json" },
-			body: JSON.stringify(body),
+			body: JSON.stringify(payload),
 		},
 	)
 
-	const data = await res.json()
-	return Response.json(data)
+	const data = await response.json()
+
+	return new Response(JSON.stringify(data), {
+		status: response.status,
+		headers: { "Content-Type": "application/json" },
+	})
 }
