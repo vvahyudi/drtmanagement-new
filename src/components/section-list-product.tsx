@@ -10,7 +10,6 @@ interface Product {
 	id: number
 	name: string
 	image: string
-	gradient: string
 	badges: {
 		label: string
 		variant: "default" | "secondary" | "destructive" | "outline"
@@ -24,7 +23,6 @@ const products: Product[] = [
 		id: 1,
 		name: "DUKU MOMENT",
 		image: "/logo-duku.jpeg",
-		gradient: "bg-gradient-to-br from-green-400 to-emerald-500",
 		badges: [
 			{ label: "CUSTOM AMOUNT", variant: "default" },
 			{ label: "SUPPORT API", variant: "secondary" },
@@ -35,7 +33,6 @@ const products: Product[] = [
 		id: 2,
 		name: "DAZZ LIVE",
 		image: "/logo-dazz.webp",
-		gradient: "bg-gradient-to-br from-purple-500 to-indigo-600",
 		badges: [
 			{ label: "SUPPORT API", variant: "secondary" },
 			{ label: "CUSTOM AMOUNT", variant: "default" },
@@ -46,7 +43,6 @@ const products: Product[] = [
 		id: 3,
 		name: "RIVO LIVE",
 		image: "/logo-rivo.webp",
-		gradient: "bg-gradient-to-br from-rose-500 to-pink-600",
 		badges: [
 			{ label: "CUSTOM AMOUNT", variant: "default" },
 			{ label: "SUPPORT API", variant: "secondary" },
@@ -58,7 +54,6 @@ const products: Product[] = [
 		id: 4,
 		name: "MICO LIVE",
 		image: "/logo-mico.png",
-		gradient: "bg-gradient-to-br from-blue-500 to-cyan-500",
 		badges: [
 			{ label: "CUSTOM AMOUNT", variant: "default" },
 			{ label: "SUPPORT API", variant: "secondary" },
@@ -116,20 +111,15 @@ export default function ProductGrid() {
 							</div>
 
 							{/* Image with Gradient Background */}
-							<CardHeader
-								className={cn(
-									"p-0 h-48 relative overflow-hidden",
-									product.gradient,
-								)}
-							>
-								<div className="absolute inset-0 flex items-center justify-center p-8">
+							<CardHeader className=" overflow-hidden">
+								<div className=" inset-0 flex items-center justify-center p-4">
 									<div className="relative w-32 h-32">
 										<Image
 											src={product.image}
 											alt={product.name}
 											fill
 											className="object-contain rounded-4xl drop-shadow-lg"
-											sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+											sizes="(max-width: 768px) 100vw, (max-width: 1200px) 30vw, 33vw"
 										/>
 									</div>
 								</div>
@@ -137,16 +127,16 @@ export default function ProductGrid() {
 
 							{/* Coming Soon Overlay */}
 							{!product.available && (
-								<div className="absolute inset-0 bg-black/60 flex items-center justify-center z-30">
-									<div className="bg-white/90 text-black px-4 py-2 rounded-full font-bold text-sm">
+								<div className="absolute inset-0 bg-muted-foreground/60 flex items-center justify-center z-30">
+									<div className="bg-muted-foreground/90 text-accent px-4 py-2 rounded-full font-bold text-sm">
 										Coming Soon
 									</div>
 								</div>
 							)}
 
 							{/* Product Info */}
-							<CardFooter className="flex-col items-center p-6 bg-gradient-to-b from-card to-card/80">
-								<h3 className="text-lg font-bold text-center">
+							<CardFooter className="flex-col items-center">
+								<h3 className="text-lg font-bold text-accent text-center">
 									{product.name}
 								</h3>
 								{product.available && product.link ? (
@@ -154,7 +144,7 @@ export default function ProductGrid() {
 										href={product.link}
 										className={cn(
 											"mt-4 w-full py-2 rounded-md font-medium transition-colors text-center block",
-											"bg-primary text-primary-foreground hover:bg-primary/90",
+											"bg-gradient-purple-pink text-primary-foreground hover:bg-fuchsia-600",
 										)}
 									>
 										Top Up Now

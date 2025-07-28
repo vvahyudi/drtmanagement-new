@@ -33,58 +33,50 @@ const AcceptPayment = ({
 	logos = [
 		{
 			id: "logo-1",
-			description: "Logo 1",
-			image:
-				"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/astro-wordmark.svg",
+			description: "Bank BCA",
+			image: "/payment/bca.png",
 			className: "h-7 w-auto",
 		},
 		{
 			id: "logo-2",
-			description: "Logo 2",
-			image:
-				"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/figma-wordmark.svg",
+			description: "Bank Mandiri",
+			image: "/payment/mandiri.png",
 			className: "h-7 w-auto",
 		},
 		{
 			id: "logo-3",
-			description: "Logo 3",
-			image:
-				"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/nextjs-wordmark.svg",
+			description: "Bank BRI",
+			image: "/payment/bri.png",
 			className: "h-7 w-auto",
 		},
 		{
 			id: "logo-4",
-			description: "Logo 4",
-			image:
-				"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/react-wordmark.svg",
+			description: "Bank BNI",
+			image: "/payment/bni.png",
 			className: "h-7 w-auto",
 		},
 		{
 			id: "logo-5",
-			description: "Logo 5",
-			image:
-				"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/shadcn-ui-wordmark.svg",
+			description: "QRIS",
+			image: "/payment/qris.png",
 			className: "h-7 w-auto",
 		},
 		{
 			id: "logo-6",
-			description: "Logo 6",
-			image:
-				"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/supabase-wordmark.svg",
+			description: "Gopay",
+			image: "/payment/gopay.png",
 			className: "h-7 w-auto",
 		},
 		{
 			id: "logo-7",
-			description: "Logo 7",
-			image:
-				"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/tailwind-wordmark.svg",
-			className: "h-4 w-auto",
+			description: "OVO",
+			image: "/payment/ovo.png",
+			className: "h-7 w-auto",
 		},
 		{
 			id: "logo-8",
-			description: "Logo 8",
-			image:
-				"https://deifkwefumgah.cloudfront.net/shadcnblocks/block/logos/vercel-wordmark.svg",
+			description: "Dana",
+			image: "/payment/dana.png",
 			className: "h-7 w-auto",
 		},
 	],

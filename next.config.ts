@@ -4,11 +4,6 @@ const nextConfig: NextConfig = {
 	/* config options here */
 
 	allowedDevOrigins: [
-		"local-origin.dev",
-		"*.local-origin.dev",
-		"localhost:3000",
-		"192.168.137.1:3000",
-		"https://083d4f325dfbb1.lhr.life",
 		"https://tripay.co.id/api-sandbox",
 		"https://tripay.co.id/api",
 	],

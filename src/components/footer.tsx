@@ -170,7 +170,7 @@ const Footer: React.FC = () => {
 
 					<div className="flex items-center gap-6 text-xs text-slate-400">
 						<Link
-							href="/privacy"
+							href="/privacy-policy"
 							className="hover:text-white transition-colors duration-300"
 						>
 							Kebijakan Privasi
