@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-img-element */
 "use client"
 
 import React, { useState } from "react"
@@ -75,7 +74,7 @@ export default function KalkulatorDazzPage(): React.JSX.Element {
 	}
 
 	return (
-		<div className="max-w-md mx-auto p-4 rounded-xl bg-gradient-deep-space-alt border border-white/10 shadow-lg backdrop-blur">
+		<div className="max-w-md mx-auto p-4 rounded-xl bg-gradient-deep-space-alt border border-white/10 shadow-lg backdrop-blur relative">
 			<header className="bg-gradient-purple-pink p-6 rounded-lg text-center">
 				<div className="inline-flex p-3 rounded-full bg-white/10 mb-3">
 					<Sparkles className="w-6 h-6 text-accent" />
@@ -195,7 +194,7 @@ export default function KalkulatorDazzPage(): React.JSX.Element {
 								</div>
 
 								<div className="space-y-3">
-									{["basicBonus", "durationBonus"].map((key, i) => (
+									{["basicBonus", "durationBonus"].map((key) => (
 										<div
 											key={key}
 											className="bg-gradient-deep-space-alt p-3 rounded-lg border border-white/10 flex justify-between items-center"

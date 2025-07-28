@@ -133,7 +133,7 @@ export default function KalkulatorDukuPage() {
 	}
 
 	return (
-		<div className="max-w-md mx-auto p-4 rounded-xl bg-gradient-to-br from-gray-900 to-gray-800 border border-white/10 shadow-2xl backdrop-blur-sm">
+		<div className="max-w-md mx-auto p-4 rounded-xl bg-gradient-to-br from-gray-900 to-gray-800 border border-white/10 shadow-2xl backdrop-blur-sm relative mb-8">
 			<header className="bg-gradient-to-r from-emerald-500 to-teal-500 p-6 rounded-lg text-center mb-6 shadow-lg">
 				<div className="inline-flex p-3 rounded-full bg-white/20 mb-3 shadow-md">
 					<Sparkles className="w-6 h-6 text-white" />
@@ -234,7 +234,7 @@ export default function KalkulatorDukuPage() {
 							].map(({ tab, label }) => (
 								<button
 									key={tab}
-									onClick={() => setDisplayTab(tab as any)}
+									onClick={() => setDisplayTab(tab as "income" | "reward")}
 									className={`flex-1 py-2 rounded-md transition-all font-medium text-sm flex items-center justify-center ${
 										displayTab === tab
 											? "bg-gradient-to-r from-emerald-500/80 to-teal-500/80 text-white shadow"

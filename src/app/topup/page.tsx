@@ -1,13 +1,5 @@
-import SectionJoinUs from "@/components/section-join-us"
+import ProductGrid from "@/components/section-list-product"
 
-import React from "react"
-
-const TopUpPage = () => {
-	return (
-		<main className="bg-gradient-deep-space min-h-screen">
-			<SectionJoinUs />
-		</main>
-	)
+export default function TopUpPage() {
+	return <ProductGrid />
 }
-
-export default TopUpPage

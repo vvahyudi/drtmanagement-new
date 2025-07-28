@@ -78,8 +78,6 @@ const WhatsAppButton = ({
 			if (!newWindow) {
 				window.location.href = whatsappUrl
 			}
-
-			console.log("WhatsApp opened:", whatsappUrl)
 		} catch (error) {
 			console.error("Error opening WhatsApp:", error)
 			// Fallback: try to open WhatsApp without message
@@ -101,7 +99,7 @@ const WhatsAppButton = ({
 
 	return (
 		<div
-			className={`fixed z-50 ${positionClasses[position]} ${className}`}
+			className={`fixed z-110 ${positionClasses[position]} ${className}`}
 			role="button"
 			aria-label={customText || "Contact us on WhatsApp"}
 		>

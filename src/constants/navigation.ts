@@ -1,5 +1,5 @@
-import { NavigationLink } from "@/types/navigation"
-import { Home, Wallet, Users, Info, Mail, Sparkles } from "lucide-react"
+import { NavigationLink } from "../types/navigation"
+import { Home, Wallet, Users, Info, Mail } from "lucide-react"
 
 export const NAVIGATION_LINKS: NavigationLink[] = [
 	{
@@ -11,41 +11,19 @@ export const NAVIGATION_LINKS: NavigationLink[] = [
 		name: "Top Up",
 		path: "/topup",
 		icon: Wallet,
-		submenu: [
-			{
-				name: "Dazz",
-				path: "/topup/dazz",
-				icon: Sparkles,
-			},
-			{
-				name: "Duku",
-				path: "/topup/duku",
-				icon: Sparkles,
-			},
-			{
-				name: "Mico",
-				path: "/topup/mico",
-				icon: Sparkles,
-			},
-			{
-				name: "Rivo",
-				path: "/topup/rivo",
-				icon: Sparkles,
-			},
-		],
 	},
 	{
-		name: "Our Talents",
-		path: "/talent",
+		name: "Status Pesanan",
+		path: "/status-pesanan",
 		icon: Users,
 	},
 	{
-		name: "About",
+		name: "Tentang Kami",
 		path: "/about",
 		icon: Info,
 	},
 	{
-		name: "Contact",
+		name: "Kontak",
 		path: "/contact",
 		icon: Mail,
 	},

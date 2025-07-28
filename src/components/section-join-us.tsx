@@ -57,11 +57,11 @@ const SectionJoinUs: React.FC = () => {
 				<div className="text-center mb-12">
 					<Badge
 						variant="outline"
-						className="mb-4 px-4 py-2 text-sm font-medium border-white/20 bg-white/5 text-white backdrop-blur-sm"
+						className="mb-4 px-4 py-2 text-sm font-medium border-white/20 bg-white/5 text-accent backdrop-blur-sm"
 					>
 						Join Our Community
 					</Badge>
-					<h1 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-white via-purple-200 to-white bg-clip-text text-transparent mb-6">
+					<h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-accent mb-6">
 						COME JOIN US!
 					</h1>
 					<p className="text-lg md:text-xl text-white/80 max-w-2xl mx-auto font-medium leading-relaxed">

@@ -3,8 +3,10 @@ import { DM_Sans } from "next/font/google"
 import { Suspense, type ReactNode } from "react"
 
 import WhatsAppButton from "@/components/whatsapp-button"
+import { Providers } from "@/components/providers"
+
 import "@/styles/globals.css"
-import { PageTransition, StairTransition } from "@/components/transitions"
+import { PageTransition } from "@/components/transitions"
 import Header from "@/components/header/header"
 import Footer from "@/components/footer"
 
@@ -132,6 +134,15 @@ export default function RootLayout({ children }: RootLayoutProps) {
 				<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 				<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
 				<link rel="manifest" href="/manifest.json" />
+
+				{/* Preload font agar warning hilang dan optimasi loading */}
+				<link
+					rel="preload"
+					href="/_next/static/media/_nFnOHM81r4j6k0gjAW3mujVU2B2G_Bx0vrx52g-s.p.b23d43ef.woff2"
+					as="font"
+					type="font/woff2"
+					crossOrigin="anonymous"
+				/>
 			</head>
 			<body
 				className="min-h-screen bg-gradient-deep-space-alt font-sans antialiased"
@@ -146,15 +157,15 @@ export default function RootLayout({ children }: RootLayoutProps) {
 				</a>
 
 				{/* Main content area */}
-				<PageTransition>
-					<StairTransition />
-					<div>
-						<Header />
-						{children}
-
-						<Footer />
-					</div>
-				</PageTransition>
+				<Providers>
+					<PageTransition>
+						<div>
+							<Header />
+							{children}
+							<Footer />
+						</div>
+					</PageTransition>
+				</Providers>
 
 				{/* WhatsApp component with suspense boundary */}
 				<Suspense fallback={<WhatsAppFallback />}>

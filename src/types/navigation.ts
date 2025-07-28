@@ -5,9 +5,4 @@ export interface NavigationLink {
 	name: string
 	path: string
 	icon?: LucideIcon
-	submenu?: {
-		name: string
-		path: string
-		icon?: LucideIcon
-	}[]
 }

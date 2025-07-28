@@ -25,18 +25,17 @@ const Footer: React.FC = () => {
 			{
 				title: "Layanan Kami",
 				items: [
-					{ label: "Top Up", href: "/top-up" },
-					{ label: "Talent Recruitment", href: "/talent-recruitment" },
+					{ label: "Top Up", href: "/topup" },
 					{ label: "Partnership", href: "/partnership" },
-					{ label: "Kebijakan Layanan", href: "/privacy-policy" },
+					{ label: "Talent Recruitment", href: "/talent-recruitment" },
 				],
 			},
 			{
-				title: "DRT Management",
+				title: "DRT Entertainment",
 				items: [
-					{ label: "Our Talents", href: "/talents" },
-					{ label: "About", href: "/about" },
-					{ label: "Contact", href: "/contact" },
+					{ label: "Talent ", href: "#" },
+					{ label: "Tentang Kami", href: "/about" },
+					{ label: "Kontak", href: "/contact" },
 				],
 			},
 		],
@@ -50,14 +49,14 @@ const Footer: React.FC = () => {
 	}, [])
 
 	return (
-		<footer className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white overflow-hidden">
+		<footer className="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white overflow-hidden ">
 			{/* Background decoration */}
 			<div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
 			<div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-slate-600 to-transparent" />
 
 			{/* Main content */}
-			<div className="relative container mx-auto px-6 py-12 lg:px-8 lg:py-16">
-				<div className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16">
+			<div className="relative container mx-auto px-6 py-6 lg:px-8 lg:py-8">
+				<div className="grid grid-cols-1 lg:grid-cols-3 gap-6 lg:gap-8">
 					{/* Brand section */}
 					<div className="lg:col-span-1">
 						<div className="flex items-center gap-4 mb-6">
@@ -66,7 +65,7 @@ const Footer: React.FC = () => {
 								<div className="relative bg-white/10 backdrop-blur-sm rounded-xl p-2 border border-white/20">
 									<Image
 										src="/logo-drt.png"
-										alt="DRT Management Logo"
+										alt="DRT Entertainment Logo"
 										width={60}
 										height={60}
 										className="w-15 h-15 object-contain"
@@ -80,14 +79,14 @@ const Footer: React.FC = () => {
 									DRT
 								</span>
 								<span className="text-xl text-slate-200 font-medium">
-									Management
+									Entertainment
 								</span>
 							</div>
 						</div>
 
-						<p className="text-slate-300 leading-relaxed max-w-md">
-							Broadcasting Management and Live Entertainment solutions tailored
-							for modern digital experiences.
+						<p className="text-slate-300 leading-relaxed max-w-md text-sm">
+							Broadcasting and Live Entertainment solutions tailored for modern
+							digital experiences.
 						</p>
 
 						{/* Social links placeholder */}
@@ -105,7 +104,7 @@ const Footer: React.FC = () => {
 					</div>
 
 					{/* Navigation sections */}
-					<div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+					<div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-4 lg:gap-6">
 						{footerSections.map((section) => (
 							<nav key={section.title} className="space-y-4">
 								<h3 className="text-lg font-semibold text-white mb-6 relative">
@@ -124,7 +123,7 @@ const Footer: React.FC = () => {
 													onClick={() => handleNavClick(item.href, item.label)}
 													className="group inline-flex items-center text-slate-300 hover:text-white transition-all duration-300 ease-out"
 												>
-													<span className="relative">
+													<span className="relative ">
 														{item.label}
 														<span className="absolute inset-x-0 -bottom-1 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
 													</span>
@@ -149,7 +148,7 @@ const Footer: React.FC = () => {
 													onClick={() => handleNavClick(item.href, item.label)}
 													className="group inline-flex items-center text-slate-300 hover:text-white transition-all duration-300 ease-out"
 												>
-													<span className="relative">
+													<span className="relative text-sm lg:text-base">
 														{item.label}
 														<span className="absolute inset-x-0 -bottom-1 h-0.5 bg-gradient-to-r from-blue-400 to-purple-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
 													</span>
@@ -165,22 +164,22 @@ const Footer: React.FC = () => {
 
 				{/* Bottom section */}
 				<div className="border-t border-slate-700/50 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-					<p className="text-sm text-slate-400 text-center md:text-left">
-						© {new Date().getFullYear()} DRT Management. All rights reserved.
+					<p className="text-xs text-slate-400 text-center md:text-left">
+						© {new Date().getFullYear()} DRT Entertainment. All rights reserved.
 					</p>
 
-					<div className="flex items-center gap-6 text-sm text-slate-400">
+					<div className="flex items-center gap-6 text-xs text-slate-400">
 						<Link
 							href="/privacy"
 							className="hover:text-white transition-colors duration-300"
 						>
-							Privacy Policy
+							Kebijakan Privasi
 						</Link>
 						<Link
 							href="/terms"
 							className="hover:text-white transition-colors duration-300"
 						>
-							Terms of Service
+							Ketentuan Layanan
 						</Link>
 					</div>
 				</div>
