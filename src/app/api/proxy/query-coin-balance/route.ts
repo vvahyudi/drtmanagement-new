@@ -5,7 +5,7 @@ export async function POST(req: NextRequest) {
 
 	// Forward request to external API
 	const response = await fetch(
-		"https://apiserver.rivoworldserver.com/v2/third/agent/query-user-info",
+		"http://apiserver.rivoworldserver.com/v2/third/agent/query-coin-balance",
 		{
 			method: "POST",
 			headers: {

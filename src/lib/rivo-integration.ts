@@ -14,10 +14,8 @@ interface RivoRequestParams {
 	orderNum?: string
 }
 
-const BASE_URL =
-	process.env.NEXT_PUBLIC_RIVO_API_URL ||
-	"https://apiserver.rivoworldserver.com/v2/third/agent"
-const AGENT_KEY = process.env.NEXT_PUBLIC_RIVO_AGENT_KEY || ""
+const BASE_URL = process.env.NEXT_PUBLIC_RIVO_API_URL || ""
+const AGENT_KEY = process.env.RIVO_AGENT_KEY || ""
 const AGENT_ID = Number(process.env.NEXT_PUBLIC_RIVO_AGENT_ID) || 0
 
 // Generate signature based on Rivo's algorithm
