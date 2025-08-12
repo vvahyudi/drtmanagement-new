@@ -21,8 +21,12 @@ export function ProductHeader({ title, subtitle, icon }: ProductHeaderProps) {
 				</div>
 			</div>
 			<div>
-				<h1 className="text-2xl font-bold text-gray-900">{title}</h1>
-				<p className="text-gray-600">{subtitle}</p>
+				<h1 className="text-2xl font-bold text-primary dark:text-primary">
+					{title}
+				</h1>
+				<p className="text-primary-primary/80 dark:text-primary/80">
+					{subtitle}
+				</p>
 			</div>
 		</div>
 	)

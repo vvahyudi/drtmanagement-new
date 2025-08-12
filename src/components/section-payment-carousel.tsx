@@ -84,7 +84,7 @@ const AcceptPayment = ({
 	return (
 		<section className="py-20">
 			<div className="flex flex-col items-center justify-center text-center">
-				<h1 className="my-6 text-2xl font-bold text-accent text-pretty lg:text-4xl">
+				<h1 className="my-6 text-2xl font-bold  text-pretty lg:text-4xl">
 					{heading}
 				</h1>
 				<p className="mb-12 text-lg text-muted-foreground">{subheading}</p>

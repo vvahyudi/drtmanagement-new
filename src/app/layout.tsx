@@ -1,14 +1,8 @@
 import type { Metadata, Viewport } from "next"
 import { DM_Sans } from "next/font/google"
-import { Suspense, type ReactNode } from "react"
-
-import WhatsAppButton from "@/components/whatsapp-button"
-import { Providers } from "@/components/providers"
-
+import Script from "next/script"
 import "@/styles/globals.css"
-import { PageTransition } from "@/components/transitions"
-import Header from "@/components/header/header"
-import Footer from "@/components/footer"
+import { Providers } from "@/components/providers"
 
 // Optimized font loading with display swap for better performance
 const dmSans = DM_Sans({
@@ -100,23 +94,15 @@ export const viewport: Viewport = {
 	],
 }
 
-interface RootLayoutProps {
-	children: ReactNode
-}
-
 // WhatsApp component loading fallback
-function WhatsAppFallback() {
-	return (
-		<div
-			className="fixed bottom-4 right-4 z-50 h-16 w-16 rounded-full bg-green-500 animate-pulse"
-			aria-label="Loading WhatsApp button"
-		/>
-	)
-}
 
-export default function RootLayout({ children }: RootLayoutProps) {
+export default function RootLayout({
+	children,
+}: {
+	children: React.ReactNode
+}) {
 	return (
-		<html lang="en" className={dmSans.variable}>
+		<html lang="en" className={dmSans.variable} suppressHydrationWarning>
 			<head>
 				{/* Preconnect to external domains for performance */}
 				<link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -143,42 +129,8 @@ export default function RootLayout({ children }: RootLayoutProps) {
 					type="font/woff2"
 					crossOrigin="anonymous"
 				/>
-			</head>
-			<body
-				className="min-h-screen bg-gradient-deep-space-alt font-sans antialiased"
-				suppressHydrationWarning
-			>
-				{/* Skip to main content for accessibility */}
-				<a
-					href="#main-content"
-					className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 z-50 bg-primary text-primary-foreground px-4 py-2 rounded-md font-medium transition-all duration-200"
-				>
-					Skip to main content
-				</a>
-
-				{/* Main content area */}
-				<Providers>
-					<PageTransition>
-						<div>
-							<Header />
-							{children}
-							<Footer />
-						</div>
-					</PageTransition>
-				</Providers>
-
-				{/* WhatsApp component with suspense boundary */}
-				<Suspense fallback={<WhatsAppFallback />}>
-					<WhatsAppButton
-						phoneNumber="6282322503101"
-						message="Hi! I'm interested in DRT Entertainment services. Can you help me get started with digital entertainment or livestreaming?"
-						customText="Need Help?"
-						notificationCount={1}
-					/>
-				</Suspense>
-
-				{/* Structured data for SEO */}
-				<script
+				<Script
+					id="org-ld-json"
 					type="application/ld+json"
 					dangerouslySetInnerHTML={{
 						__html: JSON.stringify({
@@ -212,6 +164,11 @@ export default function RootLayout({ children }: RootLayoutProps) {
 						}),
 					}}
 				/>
+			</head>
+			<body className="font-sans antialiased">
+				<Providers>{children}</Providers>
+
+				{/* Structured data for SEO */}
 			</body>
 		</html>
 	)

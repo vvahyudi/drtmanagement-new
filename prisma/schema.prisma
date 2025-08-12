@@ -1,0 +1,160 @@
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum TransactionStatus {
+  PENDING
+  PAID
+  FAILED
+  SUCCESS
+}
+
+enum ProcessingStatus {
+  UNPAID
+  DELIVERING
+  DELIVERED
+  CANCELLED
+}
+
+enum UserRole {
+  ADMIN
+  STAFF
+}
+
+// Better Auth Models
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  email         String    @unique
+  password      String? // For email/password authentication
+  emailVerified Boolean
+  image         String?
+  role          UserRole  @default(STAFF)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+
+  accounts Account[]
+  sessions Session[]
+
+  @@map("user")
+}
+
+model Account {
+  id                String   @id @default(cuid())
+  userId            String
+  // Better Auth fields
+  refreshToken      String?  @db.Text
+  accessToken       String?  @db.Text
+  createdAt         DateTime @default(now())
+  updatedAt         DateTime @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  accountId             String
+  providerId            String
+  accessTokenExpiresAt  DateTime?
+  refreshTokenExpiresAt DateTime?
+  password              String?
+
+  // Unique per provider/account id pair (Better Auth)
+  @@unique([providerId, accountId])
+  @@map("account")
+}
+
+model Session {
+  id        String   @id @default(cuid())
+  token     String   @unique
+  userId    String
+  expiresAt DateTime
+  ipAddress String?
+  userAgent String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("session")
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expiresAt  DateTime
+  createdAt  DateTime @default(now())
+
+  @@unique([identifier, token])
+}
+
+// Existing Models
+
+model Customer {
+  id          String   @id @default(uuid())
+  phoneNumber String   @unique
+  createdAt   DateTime @default(now())
+
+  transactions Transaction[]
+}
+
+model Product {
+  id            String  @id @default(uuid())
+  name          String
+  code          String  @unique
+  amount        Int // Jumlah coin utama
+  price         Int // Harga jual ke customer
+  purchasePrice Int // Modal admin
+  bonusAmount   Int // Bonus coin tambahan
+  status        String  @default("available") // available, disabled, etc.
+  badge         String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  transactions Transaction[]
+}
+
+model Transaction {
+  id            String @id @default(uuid())
+  transactionId String @unique
+  invoiceId     String @unique
+
+  customerId String
+  customer   Customer @relation(fields: [customerId], references: [id])
+
+  productId String
+  product   Product @relation(fields: [productId], references: [id])
+
+  amount        Int
+  price         Int
+  purchasePrice Int
+  bonus         Int
+  totalAmount   Int
+
+  status            TransactionStatus @default(PENDING)
+  processingStatus  ProcessingStatus  @default(UNPAID)
+  paymentMethodName String            @default("QRIS")
+
+  requestBody Json
+  paidBody    Json?
+
+  paidAt    DateTime?
+  expiredAt DateTime?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Verification {
+  id         String    @id
+  identifier String
+  value      String
+  expiresAt  DateTime
+  createdAt  DateTime?
+  updatedAt  DateTime?
+
+  @@map("verification")
+}

@@ -14,7 +14,7 @@ export const NAVIGATION_LINKS: NavigationLink[] = [
 	},
 	{
 		name: "Status Pesanan",
-		path: "/status-pesanan",
+		path: "/payment/status",
 		icon: Users,
 	},
 	{

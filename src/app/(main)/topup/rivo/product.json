@@ -1,0 +1,182 @@
+[
+	{
+		"name": "Custom Diamond",
+		"code": "RIVO_CUSTOM",
+		"amount": 0,
+		"purchasePrice": 0,
+		"price": 0,
+		"bonusAmount": 0,
+		"status": "available",
+		"badge": null
+	},
+	{
+		"name": "RIVO 10K",
+		"code": "RIVO10K",
+		"amount": 10000,
+		"purchasePrice": 15000,
+		"price": 17000,
+		"bonusAmount": 500,
+		"status": "available",
+		"badge": null
+	},
+	{
+		"name": "RIVO 20K",
+		"code": "RIVO20K",
+		"amount": 20000,
+		"purchasePrice": 30000,
+		"price": 34000,
+		"bonusAmount": 1000,
+		"status": "available",
+		"badge": null
+	},
+	{
+		"name": "RIVO 50K",
+		"code": "RIVO50K",
+		"amount": 50000,
+		"purchasePrice": 75000,
+		"price": 85000,
+		"bonusAmount": 2500,
+		"status": "available",
+		"badge": null
+	},
+	{
+		"name": "RIVO 100K",
+		"code": "RIVO100K",
+		"amount": 100000,
+		"purchasePrice": 150000,
+		"price": 170000,
+		"bonusAmount": 5000,
+		"status": "available",
+		"badge": null
+	},
+	{
+		"name": "RIVO 150K",
+		"code": "RIVO150K",
+		"amount": 150000,
+		"purchasePrice": 225000,
+		"price": 255000,
+		"bonusAmount": 7500,
+		"status": "available",
+		"badge": null
+	},
+	{
+		"name": "RIVO 200K",
+		"code": "RIVO200K",
+		"amount": 200000,
+		"purchasePrice": 300000,
+		"price": 340000,
+		"bonusAmount": 10000,
+		"status": "available",
+		"badge": null
+	},
+	{
+		"name": "RIVO 300K",
+		"code": "RIVO300K",
+		"amount": 300000,
+		"purchasePrice": 450000,
+		"price": 510000,
+		"bonusAmount": 15000,
+		"status": "available",
+		"badge": null
+	},
+	{
+		"name": "RIVO 400K",
+		"code": "RIVO400K",
+		"amount": 400000,
+		"purchasePrice": 600000,
+		"price": 680000,
+		"bonusAmount": 20000,
+		"status": "available",
+		"badge": null
+	},
+	{
+		"name": "RIVO 500K",
+		"code": "RIVO500K",
+		"amount": 500000,
+		"purchasePrice": 750000,
+		"price": 850000,
+		"bonusAmount": 25000,
+		"status": "available",
+		"badge": null
+	},
+	{
+		"name": "RIVO 600K",
+		"code": "RIVO600K",
+		"amount": 600000,
+		"purchasePrice": 900000,
+		"price": 1020000,
+		"bonusAmount": 30000,
+		"status": "available",
+		"badge": null
+	},
+	{
+		"name": "RIVO 700K",
+		"code": "RIVO700K",
+		"amount": 700000,
+		"purchasePrice": 1050000,
+		"price": 1190000,
+		"bonusAmount": 35000,
+		"status": "available",
+		"badge": null
+	},
+	{
+		"name": "RIVO 800K",
+		"code": "RIVO800K",
+		"amount": 800000,
+		"purchasePrice": 1200000,
+		"price": 1360000,
+		"bonusAmount": 40000,
+		"status": "available",
+		"badge": null
+	},
+	{
+		"name": "RIVO 900K",
+		"code": "RIVO900K",
+		"amount": 900000,
+		"purchasePrice": 1350000,
+		"price": 1530000,
+		"bonusAmount": 45000,
+		"status": "available",
+		"badge": null
+	},
+	{
+		"name": "RIVO 1000K",
+		"code": "RIVO1000K",
+		"amount": 1000000,
+		"purchasePrice": 1500000,
+		"price": 1700000,
+		"bonusAmount": 50000,
+		"status": "available",
+		"badge": null
+	},
+	{
+		"name": "RIVO 1500K",
+		"code": "RIVO1500K",
+		"amount": 1500000,
+		"purchasePrice": 2250000,
+		"price": 2550000,
+		"bonusAmount": 75000,
+		"status": "available",
+		"badge": null
+	},
+	{
+		"name": "RIVO 2000K",
+		"code": "RIVO2000K",
+		"amount": 2000000,
+		"purchasePrice": 3000000,
+		"price": 3400000,
+		"bonusAmount": 100000,
+		"status": "available",
+		"badge": null
+	},
+	{
+		"name": "RIVO 3000K",
+		"code": "RIVO3000K",
+		"amount": 3000000,
+		"purchasePrice": 4500000,
+		"price": 5100000,
+		"bonusAmount": 150000,
+		"status": "available",
+		"badge": null
+	}
+]

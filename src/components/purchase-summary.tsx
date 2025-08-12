@@ -1,15 +1,12 @@
 "use client"
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { Separator } from "@/components/ui/separator"
+
+import type { Product } from "@/app/(main)/topup/rivo/client"
 
 interface PurchaseSummaryProps {
-	selectedPackage?: {
-		coins: number
-		price: number
-		cashback?: number
-	}
+	selectedPackage?: Product
 	userId?: string
 	whatsApp?: string
 	onPurchase?: () => void
@@ -44,73 +41,126 @@ export function PurchaseSummary({
 
 	const isValid = selectedPackage && userId && whatsApp
 
-	if (!selectedPackage) {
-		return null
-	}
+	if (!selectedPackage) return null
 
 	return (
-		<Card className="sticky top-4">
-			<CardHeader>
-				<CardTitle className="text-lg">Ringkasan Pembelian</CardTitle>
-			</CardHeader>
-			<CardContent className="space-y-4">
-				<div className="space-y-2">
-					<div className="flex justify-between">
-						<span className="text-gray-600">Paket:</span>
-						<span className="font-medium">
-							{formatCoins(selectedPackage.coins)} Coin
-						</span>
-					</div>
-					{selectedPackage.cashback && (
-						<div className="flex justify-between">
-							<span className="text-gray-600">Cashback:</span>
-							<span className="font-medium text-green-600">
-								{selectedPackage.cashback}%
+		<>
+			{/* Desktop / Tablet: Sidebar Card */}
+			<Card className="sticky top-4 hidden md:block">
+				<CardContent className="space-y-4 p-4">
+					<div className="space-y-3">
+						<div className="flex items-center gap-2">
+							<span className="text-lg">👤</span>
+							<span className="text-gray-500 text-sm">ID Rivo:</span>
+							<span className="bg-purple-100 text-purple-700 px-2 py-1 rounded-full text-sm font-semibold ml-auto">
+								{userId || "-"}
 							</span>
 						</div>
+						<div className="flex items-center gap-2">
+							<span className="text-lg">🪙</span>
+							<span className="text-gray-500 text-sm">Coin:</span>
+							<span className="text-purple-700 font-bold text-lg ml-auto">
+								{formatCoins(selectedPackage.amount)} Coin
+							</span>
+						</div>
+						<div className="flex items-center gap-2">
+							<span className="text-lg">💰</span>
+							<span className="text-gray-500 text-sm">Harga:</span>
+							<span className="text-green-600 font-bold text-lg ml-auto">
+								{formatPrice(selectedPackage.price)}
+							</span>
+						</div>
+						<div className="flex items-center gap-2">
+							<span className="text-lg">💳</span>
+							<span className="text-gray-500 text-sm">Pembayaran:</span>
+							<span className="bg-green-100 text-green-700 px-2 py-1 rounded-full text-sm font-semibold ml-auto">
+								QRIS
+							</span>
+						</div>
+						{selectedPackage.bonusAmount > 0 && (
+							<div className="flex items-center gap-2 bg-purple-50 rounded-lg p-2 mt-2">
+								<span className="text-lg">🎁</span>
+								<span className="font-bold text-purple-700">BONUS 5%!</span>
+								<span className="text-green-600 font-semibold">
+									+{formatCoins(selectedPackage.bonusAmount)} coins gratis
+								</span>
+							</div>
+						)}
+						<div className="flex items-center gap-2">
+							<span className="text-lg">📱</span>
+							<span className="text-gray-500 text-sm">WhatsApp:</span>
+							<span className="ml-auto">{whatsApp || "-"}</span>
+						</div>
+					</div>
+
+					<Button
+						className="w-full bg-purple-600 hover:bg-purple-700 mt-4"
+						size="lg"
+						disabled={!isValid || disabled}
+						onClick={onPurchase}
+					>
+						{isLoading
+							? "Memproses..."
+							: isValid
+							? "Beli Sekarang"
+							: "Lengkapi Data"}
+					</Button>
+
+					{username && (
+						<p className="text-sm text-center text-green-600 mt-2">
+							Mengirim ke: {username}
+						</p>
 					)}
-					<div className="flex justify-between">
-						<span className="text-gray-600">Rivo Live ID:</span>
-						<span className="font-medium">{userId || "-"}</span>
+
+					{!isValid && (
+						<p className="text-sm text-gray-500 text-center mt-2">
+							Harap lengkapi semua data untuk melanjutkan
+						</p>
+					)}
+				</CardContent>
+			</Card>
+
+			{/* Mobile: Fixed bottom purchase bar */}
+			<div className="md:hidden fixed inset-x-0 bottom-0 z-50 border-t bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+				<div className="container mx-auto px-3 py-3 flex items-center gap-3">
+					<div className="flex-1 min-w-0">
+						<p className="text-xs text-muted-foreground truncate">
+							{selectedPackage.code === "RIVO_CUSTOM"
+								? "Custom Coin"
+								: selectedPackage.name}
+						</p>
+						<p className="text-sm font-medium truncate">
+							{formatCoins(selectedPackage.amount)} coins
+							{selectedPackage.bonusAmount > 0 && (
+								<span className="text-green-600 font-semibold">
+									{" "}
+									(+{formatCoins(selectedPackage.bonusAmount)} bonus)
+								</span>
+							)}
+						</p>
+						<p className="text-sm font-bold text-primary">
+							{formatPrice(selectedPackage.price)}
+						</p>
+						<p className="text-[11px] text-muted-foreground">via QRIS</p>
 					</div>
-					<div className="flex justify-between">
-						<span className="text-gray-600">WhatsApp:</span>
-						<span className="font-medium">{whatsApp || "-"}</span>
-					</div>
+					<Button
+						className="min-w-[140px] whitespace-nowrap"
+						size="lg"
+						onClick={onPurchase}
+						disabled={!isValid || disabled}
+					>
+						{isLoading
+							? "Memproses..."
+							: isValid
+							? "Bayar Sekarang"
+							: "Lengkapi Data"}
+					</Button>
 				</div>
+				<div className="h-[env(safe-area-inset-bottom)]" />
+			</div>
 
-				<Separator />
-
-				<div className="flex justify-between text-lg font-bold">
-					<span>Total:</span>
-					<span>{formatPrice(selectedPackage.price)}</span>
-				</div>
-
-				<Button
-					className="w-full bg-purple-600 hover:bg-purple-700"
-					size="lg"
-					disabled={!isValid || disabled}
-					onClick={onPurchase}
-				>
-					{isLoading
-						? "Memproses..."
-						: isValid
-						? "Beli Sekarang"
-						: "Lengkapi Data"}
-				</Button>
-
-				{username && (
-					<p className="text-sm text-center text-green-600">
-						Mengirim ke: {username}
-					</p>
-				)}
-
-				{!isValid && (
-					<p className="text-sm text-gray-500 text-center">
-						Harap lengkapi semua data untuk melanjutkan
-					</p>
-				)}
-			</CardContent>
-		</Card>
+			{/* Spacer so fixed bar doesn't cover content on mobile */}
+			<div className="md:hidden h-24" />
+		</>
 	)
 }

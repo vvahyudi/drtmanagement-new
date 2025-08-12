@@ -3,21 +3,18 @@
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
 
+import type { Product } from "@/app/(main)/topup/rivo/client"
+import Image from "next/image"
+
 interface CoinPackageCardProps {
-	coins: number
-	price: number
-	isHot?: boolean
-	cashback?: number
+	product: Product
 	isCustom?: boolean
 	onSelect?: () => void
 	isSelected?: boolean
 }
 
 export function CoinPackageCard({
-	coins,
-	price,
-	isHot = false,
-	cashback,
+	product,
 	isCustom = false,
 	onSelect,
 	isSelected = false,
@@ -53,11 +50,17 @@ export function CoinPackageCard({
 				onClick={onSelect}
 			>
 				<CardContent className="p-6 text-center">
-					<div className="w-16 h-16 mx-auto mb-4 bg-gradient-deep-space rounded-full flex items-center justify-center backdrop-blur-sm">
-						<div className="text-3xl text-accent font-bold">+</div>
+					<div className="w-16 h-16 mx-auto mb-4 bg-primary rounded-full flex items-center justify-center backdrop-blur-sm">
+						<div className="text-3xl text-primary-foreground dark:text-primary-foreground font-bold">
+							+
+						</div>
 					</div>
-					<h3 className="font-semibold text-accent mb-1">Custom Amount</h3>
-					<p className="text-sm text-accent/80">Klik untuk input</p>
+					<h3 className="font-semibold text-primary-foreground dark:text-primary mb-1">
+						Custom Amount
+					</h3>
+					<p className="text-sm text-primary-foreground/80 dark:text-primary/80">
+						Klik untuk input
+					</p>
 				</CardContent>
 			</Card>
 		)
@@ -70,27 +73,34 @@ export function CoinPackageCard({
 			}`}
 			onClick={onSelect}
 		>
-			{isHot && (
-				<Badge className="absolute -top-2 -right-2 bg-red-500/90 hover:bg-red-600/90 text-white px-3 py-1 text-xs font-medium backdrop-blur-sm">
-					Hot
+			{product.badge && (
+				<Badge className="absolute -top-2 -right-2 bg-red-500/90 hover:bg-red-600/90  px-3 py-1 text-xs font-medium backdrop-blur-sm">
+					{product.badge}
 				</Badge>
 			)}
 			<CardContent className="p-6 text-center">
-				<div className="w-16 h-16 mx-auto mb-4 bg-gradient-deep-space-alt rounded-full flex items-center justify-center backdrop-blur-sm">
-					<div className="w-12 h-12 bg-gradient-deep-space-alt rounded-full flex items-center justify-center shadow-inner">
-						<div className="text-3xl">🪙</div>
+				<div className="w-16 h-16 mx-auto mb-4 bg-primary rounded-full flex items-center justify-center backdrop-blur-sm">
+					<div className="w-12 h-12 bg-primary rounded-full flex items-center justify-center shadow-inner">
+						<Image
+							src={"/rivo-coin.png"}
+							alt="Rivo Coin"
+							width={48}
+							height={48}
+						/>
 					</div>
 				</div>
 				<div className="space-y-1">
-					<h3 className="font-semibold text-sm text-accent">
-						{formatCoins(coins)} Coin
-						{cashback && (
+					<h3 className="font-semibold text-sm text-primary-foreground dark:text-primary">
+						{formatCoins(product.amount)} Coin
+						{product.bonusAmount > 0 && (
 							<span className="text-sm text-green-500 block">
-								+ Cashback {cashback}%
+								+ Bonus {formatCoins(product.bonusAmount)}
 							</span>
 						)}
 					</h3>
-					<p className="text-lg font-bold text-accent">{formatPrice(price)}</p>
+					<p className="text-lg font-bold text-primary-foreground dark:text-primary">
+						{formatPrice(product.price)}
+					</p>
 				</div>
 			</CardContent>
 		</Card>
